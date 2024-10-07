@@ -6,8 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h3> Plot </h3>
-       
+        <h2 className='page-title'> Plot </h2>
       </header>
       <SelectFolder />
     </div>

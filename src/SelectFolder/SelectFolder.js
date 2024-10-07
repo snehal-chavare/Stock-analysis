@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { styled } from '@mui/material/styles';
 import {
   Checkbox,
   FormControl,
@@ -39,7 +41,21 @@ export default function SelectFolder() {
   const [showerror, setShowerror] = useState("");
   const [fileContent, setFileContent] = useState([]);
 
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 2,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+    fontSize:20
+  });
+
   const handleDirectoryChange = (event) => {
+    
     setTargetFiles(event.target.files);
     const files = Array.from(event.target.files).map((file) => ({
       name: file.name,
@@ -64,16 +80,12 @@ export default function SelectFolder() {
     // console.log("personName",personName);
   };
   const handleSubmit = async () => {
-    const tempFileContents = [];
+    
     if (
-      fromHours === "00" ||
-      fromMinutes === "00" ||
-      toHours === "00" ||
-      toMinutes === "00" ||
-      selectedDirectory == []
+      (selectedDirectory.length === 0) ||  (fromHours === "00" || toHours === "00") 
     ) {
       setShowresults(false);
-      setShowerror("Please select time");
+      selectedDirectory.length === 0 ? setShowerror("Please select a file..") : setShowerror("Please choose a time..");
     } else {
     
         await getData(personName);
@@ -127,16 +139,29 @@ export default function SelectFolder() {
 
   const isAllSelected = personName.length === selectedDirectory.length;
   return (
-    <div className="mainDiv">
-      <input
-        className="directory-input"
+    <>
+      <div className="mainDiv box-div">
+      <div className="selection-div">
+    <div className="browse-button">
+      <Button
+      component="label"
+      role={undefined}
+      variant="outlined"
+      tabIndex={-1}
+      startIcon={<CloudUploadIcon />}
+    >
+      Upload files
+      <VisuallyHiddenInput
         type="file"
         accept=".json"
         webkitdirectory="true"
         onChange={handleDirectoryChange}
+  
       />
+    </Button>
+    </div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <div style={{ width: 300 }}>
+        <div className="select-file-drop-down">
           <InputLabel id="demo-multiple-checkbox-label">
             Select files
           </InputLabel>
@@ -177,6 +202,8 @@ export default function SelectFolder() {
           </Select>
         </div>
       </FormControl>
+      </div>
+      <div className="timer-div">
       <h3>Choose Time </h3>
       <div className="time-input-group">
         <TimePicker
@@ -198,15 +225,16 @@ export default function SelectFolder() {
           setSeconds={setToSeconds}
         />
       </div>
-      &nbsp;&nbsp;&nbsp;
-      <div>
+      </div>
+      <div className="button-div">
         <Button type="submit" variant="outlined" onClick={handleSubmit}>
           Submit
         </Button>
       </div>
-      &nbsp;&nbsp;&nbsp;
-      {showerror && <div style={{ color: "red" }}>{showerror}</div>}
-      &nbsp;&nbsp;&nbsp;
+      </div>
+      <div className="result-div box-div">
+      {showerror && <span className="error-msg">{showerror}</span>}
+
       {showresults && (
         <div>
           <h3>Results</h3>
@@ -221,6 +249,8 @@ export default function SelectFolder() {
           />
         </div>
       )}
-    </div>
+      </div>
+   </>
   );
+
 }

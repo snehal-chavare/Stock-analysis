@@ -1,6 +1,6 @@
 .directory-input {
-  padding: 10px;
-  font-size: 16px;
+  padding: 2.5rem;
+  font-size: 20px;
   color: #333;
   cursor: pointer;
 }
@@ -13,18 +13,64 @@
 .directory-input:focus {
   border-color: #555;
   outline: none;
-  background-color: #fff;
+  background-color:#fff;
 }
 .mainDiv {
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  height:max-content;
-  /* width: 50%;  */
-}
 
+  display: flex;
+  flex-direction: row;
+ 
+  min-height: 10rem;
+  max-height:13rem;
+ 
+ 
+}
+.result-div{
+ 
+  margin-top: 3vh;
+ 
+  min-height: 4rem;
+  max-height: max-content;
+}
+.box-div{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 98%;
+  box-shadow: 0px 1px 1px #80808075;
+  box-sizing: border-box;
+}
+.error-msg{
+  color: red;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 3rem;
+}
+.selection-div{
+  display: flex;
+}
+.browse-button{
+  padding: 3rem;
+ 
+}
+.browse-button label{
+  font-size: 20px;
+}
+.button-div{
+  padding: 3.5rem;
+}
+.button-div button{
+  font-size: 20px;
+}
 .time-input-group {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  padding: 0px 2rem;
+}
+.select-file-drop-down{
+ padding: 2rem 0px;
+}
+.select-file-drop-down label{
+  padding: 2rem 0px;
 }
