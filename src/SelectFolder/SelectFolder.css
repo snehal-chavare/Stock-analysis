@@ -13,26 +13,21 @@
 .directory-input:focus {
   border-color: #555;
   outline: none;
-  background-color:#fff;
+  background-color: #fff;
 }
 .mainDiv {
-
   display: flex;
   flex-direction: row;
- 
   min-height: 10rem;
-  max-height:13rem;
- 
- 
+  max-height: 13rem;
 }
-.result-div{
- 
+.result-div {
   margin-top: 3vh;
- 
   min-height: 4rem;
   max-height: max-content;
+  width: 60% !important;
 }
-.box-div{
+.box-div {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
@@ -40,26 +35,25 @@
   box-shadow: 0px 1px 1px #80808075;
   box-sizing: border-box;
 }
-.error-msg{
+.error-msg {
   color: red;
   font-weight: bold;
   font-size: 25px;
   line-height: 3rem;
 }
-.selection-div{
+.selection-div {
   display: flex;
 }
-.browse-button{
+.browse-button {
   padding: 3rem;
- 
 }
-.browse-button label{
+.browse-button label {
   font-size: 20px;
 }
-.button-div{
+.button-div {
   padding: 3.5rem;
 }
-.button-div button{
+.button-div button {
   font-size: 20px;
 }
 .time-input-group {
@@ -68,9 +62,9 @@
   flex-direction: row;
   padding: 0px 2rem;
 }
-.select-file-drop-down{
- padding: 2rem 0px;
+.select-file-drop-down {
+  padding: 2rem 0px;
 }
-.select-file-drop-down label{
+.select-file-drop-down label {
   padding: 2rem 0px;
 }
