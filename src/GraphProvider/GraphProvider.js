@@ -12,7 +12,7 @@ const GraphProvider = ({ data }) => {
 
     // Set up dimensions
     const margin = { top: 20, right: 30, bottom: 20, left: 50 };
-    const width = 960 - margin.left - margin.right;
+    const width = 960 - margin.right;
     const height = 500 - margin.top - margin.bottom;
 
     //parsing dates using d3,if they are in the string format
@@ -31,9 +31,9 @@ const GraphProvider = ({ data }) => {
     // Set up scales
     const x = d3
       .scaleBand()
-      .domain(combinedParsed.map((d) => d.Date)) // This maps the Date values to the x-axis
-      .range([0, width])
-      .padding(0.1);
+      .domain([new Date('2024-08-19'), new Date('2024-08-20')])                          //.domain(combinedParsed.map((d) => d.Date)) // This maps the Date values to the x-axis
+      .range([margin.left, width])
+      .padding(5);
 
     const y = d3
       .scaleLinear() // Use linear scale for price
@@ -66,7 +66,8 @@ const GraphProvider = ({ data }) => {
     svg
       .append("g")
       .attr("transform", `translate(${margin.left},10)`)
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y).ticks(5));
+      
 
     // Create the candlestick chart
     svg
